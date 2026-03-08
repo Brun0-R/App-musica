@@ -26,14 +26,19 @@ jobs:
 
       - name: Generate local.properties
         run: |
-          echo "flutter.sdk=$(which flutter | sed 's|/bin/flutter||')" > android/local.properties
+          FLUTTER_SDK=$(dirname $(dirname $(readlink -f $(which flutter))))
+          echo "flutter.sdk=$FLUTTER_SDK" > android/local.properties
           echo "sdk.dir=$ANDROID_SDK_ROOT" >> android/local.properties
+          echo "=== local.properties ==="
+          cat android/local.properties
+          echo "=== Flutter SDK exists? ==="
+          ls "$FLUTTER_SDK/packages/flutter_tools/gradle/" | head -5
 
       - name: Get dependencies
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --verbose 2>&1 | tail -100
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4

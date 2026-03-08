@@ -7,7 +7,6 @@ plugins {
 android {
     namespace "com.musicapp.musica"
     compileSdk 34
-    ndkVersion flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
