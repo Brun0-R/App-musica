@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release 2>&1 | tee /tmp/build.log; BUILD_STATUS=${PIPESTATUS[0]}; tail -50 /tmp/build.log; exit $BUILD_STATUS
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
