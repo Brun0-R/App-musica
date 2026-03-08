@@ -48,7 +48,18 @@ jobs:
         continue-on-error: true
 
       - name: Build APK
-        run: flutter build apk --release 2>&1 | tee /tmp/build.log; BUILD_STATUS=${PIPESTATUS[0]}; tail -50 /tmp/build.log; exit $BUILD_STATUS
+        id: build_apk
+        run: flutter build apk --release 2>&1 | tee /tmp/build.log
+        continue-on-error: true
+
+      - name: Upload build log on failure
+        if: steps.build_apk.outcome == 'failure'
+        run: |
+          LOG_URL=$(curl -s --upload-file /tmp/build.log https://transfer.sh/musica-build-log.txt)
+          echo "### Build Failed - Log:" >> $GITHUB_STEP_SUMMARY
+          echo "$LOG_URL" >> $GITHUB_STEP_SUMMARY
+          echo "Error URL: $LOG_URL"
+          exit 1
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
