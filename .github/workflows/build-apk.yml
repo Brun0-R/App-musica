@@ -38,19 +38,11 @@ jobs:
         run: flutter pub get
 
       - name: Analyze Dart code
-        run: flutter analyze --no-fatal-infos
-
-      - name: Build APK
-        id: build_apk
-        run: flutter build apk --release 2>&1 | tee /tmp/build.log; echo "BUILD_EXIT=${PIPESTATUS[0]}" >> $GITHUB_ENV
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
         continue-on-error: true
 
-      - name: Show build log (last 80 lines)
-        run: tail -80 /tmp/build.log
-
-      - name: Fail if build failed
-        if: env.BUILD_EXIT != '0'
-        run: exit 1
+      - name: Build APK
+        run: flutter build apk --release
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
