@@ -38,7 +38,10 @@ jobs:
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release --verbose 2>&1 | tail -100
+        run: |
+          set -o pipefail
+          flutter build apk --release 2>&1 | tee /tmp/build.log
+          echo "Exit code: $?"
 
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
