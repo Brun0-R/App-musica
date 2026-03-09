@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       backgroundColor: AppColors.background,
       body: Center(
         child: AnimatedBuilder(
-          animation: _controller,
+          listenable: _controller,
           builder: (context, child) {
             return Opacity(
               opacity: _fadeAnimation.value,
@@ -76,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                         borderRadius: BorderRadius.circular(24),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.3),
+                            color: AppColors.primary.withOpacity(0.3),
                             blurRadius: 30,
                             spreadRadius: 5,
                           ),

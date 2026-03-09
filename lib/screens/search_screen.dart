@@ -80,18 +80,18 @@ class _SearchScreenState extends State<SearchScreen> {
                   decoration: InputDecoration(
                     hintText: AppStrings.searchHint,
                     hintStyle: TextStyle(
-                      color: AppColors.background.withValues(alpha: 0.5),
+                      color: AppColors.background.withOpacity(0.5),
                       fontSize: 14,
                     ),
                     prefixIcon: Icon(
                       Icons.search,
-                      color: AppColors.background.withValues(alpha: 0.7),
+                      color: AppColors.background.withOpacity(0.7),
                     ),
                     suffixIcon: _searchController.text.isNotEmpty
                         ? IconButton(
                             icon: Icon(
                               Icons.close,
-                              color: AppColors.background.withValues(alpha: 0.7),
+                              color: AppColors.background.withOpacity(0.7),
                             ),
                             onPressed: () {
                               _searchController.clear();
@@ -124,7 +124,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         children: [
                           Icon(
                             Icons.search,
-                            color: AppColors.textSecondary.withValues(alpha: 0.5),
+                            color: AppColors.textSecondary.withOpacity(0.5),
                             size: 64,
                           ),
                           const SizedBox(height: 16),

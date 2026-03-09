@@ -41,7 +41,7 @@ class PlayerScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.center,
             colors: [
-              AppColors.surfaceLight.withValues(alpha: 0.8),
+              AppColors.surfaceLight.withOpacity(0.8),
               AppColors.background,
             ],
           ),
@@ -90,7 +90,7 @@ class PlayerScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.5),
+                          color: Colors.black.withOpacity(0.5),
                           blurRadius: 30,
                           offset: const Offset(0, 15),
                         ),

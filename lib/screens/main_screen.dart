@@ -43,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: AppColors.divider.withValues(alpha: 0.3),
+              color: AppColors.divider.withOpacity(0.3),
             ),
           ),
         ),

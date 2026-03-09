@@ -273,7 +273,7 @@ class _FavoritesTab extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.favorite_border, color: AppColors.textSecondary.withValues(alpha: 0.5), size: 48),
+                Icon(Icons.favorite_border, color: AppColors.textSecondary.withOpacity(0.5), size: 48),
                 const SizedBox(height: 16),
                 const Text(
                   AppStrings.noFavorites,
@@ -322,7 +322,7 @@ class _DownloadsTab extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.download_outlined, color: AppColors.textSecondary.withValues(alpha: 0.5), size: 48),
+                Icon(Icons.download_outlined, color: AppColors.textSecondary.withOpacity(0.5), size: 48),
                 const SizedBox(height: 16),
                 const Text(
                   AppStrings.noDownloads,

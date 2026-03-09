@@ -101,7 +101,7 @@ class AudioPlayerService {
     }
 
     if (audioSource != null) {
-      _audioHandler.mediaItem.add(MediaItem(
+      (_audioHandler as MusicAudioHandler).setCurrentMediaItem(MediaItem(
         id: song.id,
         title: song.title,
         artist: song.artist,
@@ -275,6 +275,10 @@ enum RepeatMode { off, all, one }
 
 class MusicAudioHandler extends BaseAudioHandler with SeekHandler {
   final AudioPlayer _player;
+
+  void setCurrentMediaItem(MediaItem item) {
+    (mediaItem as BehaviorSubject<MediaItem?>).add(item);
+  }
 
   MusicAudioHandler(this._player) {
     _player.playbackEventStream.listen((event) {

@@ -54,7 +54,7 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
               SliverAppBar(
                 expandedHeight: 280,
                 pinned: true,
-                backgroundColor: colors[0].withValues(alpha: 0.8),
+                backgroundColor: colors[0].withOpacity(0.8),
                 leading: IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
@@ -76,11 +76,11 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
                           width: 140,
                           height: 140,
                           decoration: BoxDecoration(
-                            color: colors[0].withValues(alpha: 0.6),
+                            color: colors[0].withOpacity(0.6),
                             borderRadius: BorderRadius.circular(8),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.3),
+                                color: Colors.black.withOpacity(0.3),
                                 blurRadius: 20,
                                 offset: const Offset(0, 10),
                               ),
@@ -149,7 +149,7 @@ class _PlaylistDetailScreenState extends State<PlaylistDetailScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.music_off, color: AppColors.textSecondary.withValues(alpha: 0.5), size: 48),
+                        Icon(Icons.music_off, color: AppColors.textSecondary.withOpacity(0.5), size: 48),
                         const SizedBox(height: 16),
                         const Text(
                           AppStrings.noSongsInPlaylist,

@@ -39,7 +39,7 @@ class PlaylistCard extends StatelessWidget {
               child: Center(
                 child: Icon(
                   Icons.queue_music,
-                  color: AppColors.textPrimary.withValues(alpha: 0.7),
+                  color: AppColors.textPrimary.withOpacity(0.7),
                   size: 48,
                 ),
               ),
