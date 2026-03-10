@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import '../providers/history_provider.dart';
 import '../providers/player_provider.dart';
 import '../providers/playlist_provider.dart';
-import '../providers/search_provider.dart';
 import '../models/song.dart';
 import '../utils/constants.dart';
 import '../utils/formatters.dart';

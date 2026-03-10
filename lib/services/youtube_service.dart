@@ -1,4 +1,4 @@
-import 'package:youtube_explode_dart/youtube_explode_dart.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart' hide SearchResult;
 import '../models/search_result.dart';
 
 class YouTubeService {
@@ -68,17 +68,18 @@ class YouTubeService {
 
   Future<List<SearchResult>> getRelatedVideos(String videoId, {int maxResults = 10}) async {
     try {
-      final relatedVideos = await _yt.videos.getRelatedVideos(videoId);
+      final video = await _yt.videos.get(videoId);
+      final relatedVideos = await _yt.videos.getRelatedVideos(video);
       if (relatedVideos == null) return [];
 
       final results = <SearchResult>[];
-      for (final video in relatedVideos.take(maxResults)) {
+      for (final related in relatedVideos.take(maxResults)) {
         results.add(SearchResult(
-          videoId: video.id.value,
-          title: video.title,
-          author: video.author,
-          thumbnailUrl: video.thumbnails.highResUrl,
-          duration: video.duration ?? Duration.zero,
+          videoId: related.id.value,
+          title: related.title,
+          author: related.author,
+          thumbnailUrl: related.thumbnails.highResUrl,
+          duration: related.duration ?? Duration.zero,
         ));
       }
       return results;
