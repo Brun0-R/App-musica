@@ -101,7 +101,7 @@ class AudioPlayerService {
     }
 
     if (audioSource != null) {
-      _audioHandler.mediaItem.add(MediaItem(
+      _audioHandler.updateMediaItem(MediaItem(
         id: song.id,
         title: song.title,
         artist: song.artist,
@@ -304,6 +304,11 @@ class MusicAudioHandler extends BaseAudioHandler with SeekHandler {
         speed: _player.speed,
       ));
     });
+  }
+
+  @override
+  Future<void> updateMediaItem(MediaItem mediaItem) async {
+    this.mediaItem.add(mediaItem);
   }
 
   @override
